@@ -1,18 +1,23 @@
 package com.sedef.blogWeb.Model;
 
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+
 import java.sql.Blob;
-import java.util.List;
-
+import java.util.Set;
+@Data
 @Entity(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor
-public class User {
+
+public class User implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,11 +26,26 @@ public class User {
     @Column(length = 45)
     private String lastName;
     @Column(length = 45)
-    private String UserName;
-    @Column(length = 20)
+    private String username;
     private String password;
     private Blob photo;
 
-   // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private boolean accountNonExpired;
+    private boolean isEnabled;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @JoinTable(name = "authorities", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Set<Role> authorities;
+
+
+
+
+
+    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
    // private List<Comment> commentList;
 }

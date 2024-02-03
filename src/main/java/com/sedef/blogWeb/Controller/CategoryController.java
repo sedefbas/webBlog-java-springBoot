@@ -1,6 +1,6 @@
 package com.sedef.blogWeb.Controller;
 
-import Exceptions.NotFoundException;
+import com.sedef.blogWeb.Exceptions.NotFoundException;
 import com.sedef.blogWeb.Businnes.concretes.CategoryService;
 import com.sedef.blogWeb.Model.Category;
 import com.sedef.blogWeb.Request.CategoryRequest;

@@ -1,11 +1,12 @@
 package com.sedef.blogWeb.Businnes.concretes;
-import Exceptions.NotFoundException;
+import com.sedef.blogWeb.Exceptions.NotFoundException;
 import com.sedef.blogWeb.Businnes.abstracts.IComment;
 import com.sedef.blogWeb.Model.Comment;
 import com.sedef.blogWeb.Model.Post;
 import com.sedef.blogWeb.Model.User;
 import com.sedef.blogWeb.Repository.CommentRepository;
 import com.sedef.blogWeb.Request.CommentRequest;
+import com.sedef.blogWeb.enums.StatusConfirmation;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -110,4 +111,24 @@ public class CommentService implements IComment {
             commentRepository.deleteById(id);
         } else throw new NotFoundException("Post with ID not found: " + id);
     }
+
+    //adminin onay yapabilmesi için oluşturdum.
+    public List<Comment> getAllNotConfirmedComments() {
+        return commentRepository.findByStatusConfirmation(StatusConfirmation.NOT_CONFIRMATION);
+    }
+
+   //admin onaylanan tüm commentsleri görsün.
+    public List<Comment> getConfirmedComments() {
+        return commentRepository.findByStatusConfirmation(StatusConfirmation.CONFIRMATION);
+    }
+
+    public List<Comment> getConfirmedCommentsByPostId(int postId) {
+        return commentRepository.findByStatusConfirmationAndPostId(StatusConfirmation.CONFIRMATION, postId);
+    }
+
+    public List<Comment> getNotConfirmedCommentsByPostId(int postId) {
+        return commentRepository.findByStatusConfirmationAndPostId(StatusConfirmation.NOT_CONFIRMATION, postId);
+    }
+
+
 }

@@ -1,5 +1,5 @@
 package com.sedef.blogWeb.Businnes.concretes;
-import Exceptions.NotFoundException;
+import com.sedef.blogWeb.Exceptions.NotFoundException;
 import com.sedef.blogWeb.Businnes.abstracts.Ipost;
 import com.sedef.blogWeb.Model.Post;
 import com.sedef.blogWeb.Model.SubCategory;

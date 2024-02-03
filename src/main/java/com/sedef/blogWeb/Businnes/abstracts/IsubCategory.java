@@ -1,6 +1,6 @@
 package com.sedef.blogWeb.Businnes.abstracts;
 
-import Exceptions.NotFoundException;
+import com.sedef.blogWeb.Exceptions.NotFoundException;
 import com.sedef.blogWeb.Model.SubCategory;
 import com.sedef.blogWeb.Request.SubCategoryRequest;
 

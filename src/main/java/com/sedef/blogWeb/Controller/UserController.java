@@ -1,14 +1,17 @@
 package com.sedef.blogWeb.Controller;
 
-import Exceptions.NotFoundException;
+import com.sedef.blogWeb.Exceptions.NotFoundException;
 import com.sedef.blogWeb.Businnes.concretes.UserService;
 import com.sedef.blogWeb.Model.User;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.security.SecurityRequirements;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@SecurityRequirement(name = "bearerAuth") //openapi deki name ile aynı olmalı
 public class UserController {
  UserService userService;
 

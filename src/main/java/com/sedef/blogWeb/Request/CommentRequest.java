@@ -1,8 +1,10 @@
 package com.sedef.blogWeb.Request;
 import com.sedef.blogWeb.enums.StatusConfirmation;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class CommentRequest {
     private String text;
     private StatusConfirmation statusConfirmation;
@@ -10,10 +12,7 @@ public class CommentRequest {
     private int userId;
 
     public CommentRequest(String text, int postId, int userId) {
-        this.text = text;
-        this.statusConfirmation = StatusConfirmation.NOT_CONFIRMATION;
-        this.postId = postId;
-        this.userId = userId;
+        this(text, StatusConfirmation.NOT_CONFIRMATION, postId, userId);
     }
 
 }

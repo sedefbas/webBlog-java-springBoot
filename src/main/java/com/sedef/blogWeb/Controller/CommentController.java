@@ -1,5 +1,5 @@
 package com.sedef.blogWeb.Controller;
-import Exceptions.NotFoundException;
+import com.sedef.blogWeb.Exceptions.NotFoundException;
 import com.sedef.blogWeb.Businnes.concretes.CommentService;
 import com.sedef.blogWeb.Model.Comment;
 import com.sedef.blogWeb.Request.CommentRequest;
